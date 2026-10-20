@@ -1,19 +1,25 @@
 1. SBOM, signing, vulnerability gate, shown blocking a bad dependency.
 
 2. Result:
-   Acceptance: not measured  
-   Performance: not measured  
-   Correctness: not measured
+   SBOM components: 2  
+   Signature verified: True  
+   Vulnerability matches: 11  
+
+   Measured with `make bench`: [raw results](evidence/bench.json), [command output](evidence/checks.log), [environment](evidence/environment.json).
 
 3. Architecture:
 ```mermaid
 flowchart LR
-    Specification --> AwaitingWaveApproval --> Implementation
+    VulnerableMetadataFixture --> SyftSBOM --> CosignSignAndVerify --> GrypeThresholdGate
 ```
 
 4. Run it:
-No runnable implementation yet. This is a planned Wave 2 project.
+```sh
+make setup
+make lint test bench
+make demo
+```
 
-5. Decisions and limits: Public repository reserved for independent work using public or synthetic data. Implementation has not started. No company affiliation or usage is claimed. Acceptance check: Blocked-build screenshot or log; verification instructions.
+5. Decisions and limits: The vulnerable urllib3 version exists only as scanner metadata, never as installed/executed package code. Syft inventories it, cosign signs and verifies the actual SBOM using an ephemeral local key, and grype must return a vulnerability-threshold failure with matches. Private signing keys are temporary and are never committed. Local offline signing deliberately omits transparency-log upload; this demonstrates artifact integrity, not identity-backed production provenance. Grype database availability is required. See evidence/gate-failure.log, evidence/grype.json and evidence/verification.log. Reverify with .cache/bin/cosign verify-blob --key evidence/cosign.pub --signature evidence/sbom.sig --insecure-ignore-tlog evidence/sbom.cdx.json.
 
-6. Next: Implement after approval for Wave 2, then run and publish the required acceptance commands.
+6. Next: Add keyless CI identity, provenance attestations and a passing patched dependency comparison.

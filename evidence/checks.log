@@ -1,0 +1,20 @@
+/Users/rajreddy/dev/outreach/projects/p3-supply-chain-hardened-pipeline/.venv/bin/python -m ruff check src tests
+All checks passed!
+/Users/rajreddy/dev/outreach/projects/p3-supply-chain-hardened-pipeline/.venv/bin/python -m ruff format --check src tests
+2 files already formatted
+/Users/rajreddy/dev/outreach/projects/p3-supply-chain-hardened-pipeline/.venv/bin/python -m pytest -q
+.                                                                        [100%]
+1 passed in 0.12s
+/Users/rajreddy/dev/outreach/projects/p3-supply-chain-hardened-pipeline/.venv/bin/python src/main.py > evidence/bench.json
+{
+  "sbom_components": 2,
+  "signature_verified": true,
+  "vulnerability_matches": 11,
+  "bad_build_blocked": true,
+  "versions": {
+    "syft": "Application:   syft\nVersion:       1.55.0\nBuildDate:     2026-10-19T18:54:46Z\nGitCommit:     f15c3343e29dfb20cf6d82c820e7090b49808c96\nGitDescription: v1.55.0\nPlatform:      darwin/arm64\nGoVersion:     go1.26.8\nCompiler:      gc\nSchemaVersion: 16.1.11",
+    "cosign": "______   ______        _______. __    _______ .__   __.\n /      | /  __  \\      /       ||  |  /  _____||  \\ |  |\n|  ,----'|  |  |  |    |   (----`|  | |  |  __  |   \\|  |\n|  |     |  |  |  |     \\   \\    |  | |  | |_ | |  . `  |\n|  `----.|  `--'  | .----)   |   |  | |  |__| | |  |\\   |\n \\______| \\______/  |_______/    |__|  \\______| |__| \\__|\ncosign: A tool for Container Signing, Verification and Storage in an OCI registry.\n\nGitVersion:    v2.4.3\nGitCommit:     6a7abbf3ae7eb6949883a80c8f6007cc065d2dfb\nGitTreeState:  clean\nBuildDate:     2025-02-19T19:34:52Z\nGoVersion:     go1.23.6\nCompiler:      gc\nPlatform:      darwin/arm64",
+    "grype": "Application:         grype\nVersion:             0.121.0\nBuildDate:           2026-10-19T20:26:34Z\nGitCommit:           afe2742527d98d822da06c9f32eed86fe3d193e0\nGitDescription:      v0.121.0\nPlatform:            darwin/arm64\nGoVersion:           go1.26.8\nCompiler:            gc\nSyft Version:        v1.55.0\nSupported DB Schema: 6"
+  }
+}
+[0000]  WARN no explicit name and version provided for directory source, deriving artifact ID from the given path (which is not ideal)

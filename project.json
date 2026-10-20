@@ -1,0 +1,26 @@
+{
+  "id": "P3",
+  "name": "Supply-chain-hardened pipeline",
+  "problem": "SBOM, signing, vulnerability gate, shown blocking a bad dependency.",
+  "results": [
+    [
+      "SBOM components",
+      "sbom_components",
+      ""
+    ],
+    [
+      "Signature verified",
+      "signature_verified",
+      ""
+    ],
+    [
+      "Vulnerability matches",
+      "vulnerability_matches",
+      ""
+    ]
+  ],
+  "diagram": "VulnerableMetadataFixture --> SyftSBOM --> CosignSignAndVerify --> GrypeThresholdGate",
+  "limits": "The vulnerable urllib3 version exists only as scanner metadata, never as installed/executed package code. Syft inventories it, cosign signs and verifies the actual SBOM using an ephemeral local key, and grype must return a vulnerability-threshold failure with matches. Private signing keys are temporary and are never committed. Local offline signing deliberately omits transparency-log upload; this demonstrates artifact integrity, not identity-backed production provenance. Grype database availability is required. See evidence/gate-failure.log, evidence/grype.json and evidence/verification.log. Reverify with .cache/bin/cosign verify-blob --key evidence/cosign.pub --signature evidence/sbom.sig --insecure-ignore-tlog evidence/sbom.cdx.json.",
+  "next": "Add keyless CI identity, provenance attestations and a passing patched dependency comparison.",
+  "status": "done"
+}
