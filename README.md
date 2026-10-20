@@ -2,7 +2,7 @@
 
 2. Result:
    SBOM components: 2  
-   Signature verified: True  
+   Signatures verified: 1  
    Vulnerability matches: 11  
 
    Measured with `make bench`: [raw results](evidence/bench.json), [command output](evidence/checks.log), [environment](evidence/environment.json).

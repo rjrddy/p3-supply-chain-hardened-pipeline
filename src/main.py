@@ -87,6 +87,7 @@ def benchmark() -> dict:
     return {
         "sbom_components": len(json.loads(sbom.read_text()).get("components", [])),
         "signature_verified": True,
+        "signatures_verified": int(verified.returncode == 0),
         "vulnerability_matches": len(report["matches"]),
         "bad_build_blocked": blocked,
         "versions": versions,

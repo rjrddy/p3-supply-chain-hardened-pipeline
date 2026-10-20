@@ -4,11 +4,12 @@ All checks passed!
 2 files already formatted
 /Users/rajreddy/dev/outreach/projects/p3-supply-chain-hardened-pipeline/.venv/bin/python -m pytest -q
 .                                                                        [100%]
-1 passed in 0.12s
+1 passed in 0.10s
 /Users/rajreddy/dev/outreach/projects/p3-supply-chain-hardened-pipeline/.venv/bin/python src/main.py > evidence/bench.json
 {
   "sbom_components": 2,
   "signature_verified": true,
+  "signatures_verified": 1,
   "vulnerability_matches": 11,
   "bad_build_blocked": true,
   "versions": {

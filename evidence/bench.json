@@ -1,6 +1,7 @@
 {
   "sbom_components": 2,
   "signature_verified": true,
+  "signatures_verified": 1,
   "vulnerability_matches": 11,
   "bad_build_blocked": true,
   "versions": {

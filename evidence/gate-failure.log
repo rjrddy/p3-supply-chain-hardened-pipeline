@@ -1,5 +1,5 @@
 grype sbom:evidence/sbom.cdx.json --fail-on high
 exit_code=2
-[0003] ERROR discovered vulnerabilities at or above the severity threshold
+[0072] ERROR discovered vulnerabilities at or above the severity threshold
 
 Vulnerability matches: 11
